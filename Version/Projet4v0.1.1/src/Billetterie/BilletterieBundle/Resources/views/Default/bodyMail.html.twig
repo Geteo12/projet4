@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row"><center><h1>Vos entrées au musée du Louvre à la date du {{ dateReservation|date('d/m/Y') }}</h1></center></div>
+    <div class="row">
+
+       <div class="col-lg-offset-1 col-lg-10 ">
+               {{ nbClient }} entrée(s) pour un montant de {{ total }} Euros.
+               <table>
+                   <th>Billet(s)</th>
+                   {% for i in 1..nbClient %}
+                       <tr>
+                           <td>
+                               {{ clients[i-1].prenom }} {{ clients[i-1].nom }}
+                           </td>
+                       </tr>
+                   {% endfor %}
+               </table>
+           <p>Code de réservation : {{ code }}</p>
+               <br/>
+       </div>
+
+    </div>
+</div>
+{%  endblock %}
+
+
+

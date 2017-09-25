@@ -1,0 +1,11 @@
+billetterie_homepage:
+    path:     /reservation/{id}
+    defaults: { _controller: BilletterieBundle:Default:reservation }
+
+date_reservation:
+    path:     /date
+    defaults: { _controller: BilletterieBundle:Default:choixDate }
+
+prepare_stripe:
+    path:     /paiement
+    defaults: { _controller: BilletterieBundle:Default:prepare }

@@ -1,0 +1,15 @@
+billetterie_homepage:
+    path:     /reservation
+    defaults: { _controller: BilletterieBundle:Default:reservation }
+
+date_reservation:
+    path:     /date
+    defaults: { _controller: BilletterieBundle:Default:choixDate }
+
+prepare_stripe:
+    path:     /paiement
+    defaults: { _controller: BilletterieBundle:Default:prepare }
+
+remerciement:
+    path:     /merci
+    defaults: { _controller: BilletterieBundle:Default:remerciement }

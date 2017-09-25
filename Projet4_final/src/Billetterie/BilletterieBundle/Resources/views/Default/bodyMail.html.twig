@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <img id="logo" src="http://louvre-tickets.batkens.com/img/logo_128x128.png"/>
+    <div class="row"><center><h3>Vos entrées au musée du Louvre à la date du {{ dateReservation|date('d/m/Y') }}</h3></center></div>
+    <div class="row">
+
+       <div>
+             <p> {{ nbClient }} entrée(s) pour un montant de {{ total }} Euros. </p> <br/>
+           <table class="tableMail">
+                   <tr>
+                       <th>Prénom</th>
+                       <th>Nom</th>
+                       <th>Prix</th>
+                   </tr>
+                   {% for i in 1..nbClient %}
+                       <tr>
+                           <td>
+                               {{ clients[i-1].prenom }}
+                           </td>
+                           <td>
+                               {{ clients[i-1].nom }}
+                           </td>
+                           <td>
+                               {{ clients[i-1].tarif.montant }} €
+                       </tr>
+                           </td>
+                   {% endfor %}
+               </table>
+           <p>Code de réservation : {{ code }}</p>
+               <br/>
+           <p>Toute l'équipe du Louvre vous souhaite une agréable visite.</p>
+       </div>
+
+    </div>
+</div>
+{%  endblock %}
+
+
+

@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row"><center><h1>Information sur la visite</h1></center></div>
+
+    <div class="row">
+       <center><p id="pErreur"></p></center>
+       <div class="col-lg-offset-3 col-lg-5 ">
+           {{ form(formPanier) }}
+       </div>
+
+        <div class="col-lg-offset-1 col-lg-3">
+            <ul id="places"></ul>
+        </div>
+    </div>
+</div>
+
+{%  endblock %}
+{% block javascripts %}
+    <script type='text/javascript' src="{{ asset('js/date.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+{% endblock %}
+
