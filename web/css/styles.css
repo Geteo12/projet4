@@ -1,0 +1,38 @@
+body {
+    padding-top: 10px;
+    background-color: #000000;
+    background: url("../img/Louvre.jpg");
+    background-repeat: repeat;
+    color : #222222;
+    font-family: Impact, "Arial Black", Arial, Verdana, sans-serif;
+}
+@media (max-width: 770px) {
+    body
+    {
+        background: none;
+    }
+}
+
+.row
+{
+    border: 3px white solid;
+    background-color: #e0e0e0;
+    opacity: 0.9;
+    border-radius: 10px 5px 10px 5px;
+
+}
+.tpanier
+{
+    border: 3px black solid;
+}
+
+h5
+{
+    border-bottom:1px dashed green;
+}
+
+#pErreur
+{
+    color: red;
+}
+

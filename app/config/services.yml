@@ -1,0 +1,40 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    tarif_service:
+            class: Billetterie\BilletterieBundle\Services\TarifService
+            arguments: []
+
+    stripe_service:
+            class: Billetterie\BilletterieBundle\Services\StripeService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
+                - "@session"
+                - "@mail_service"
+
+    mail_service:
+            class: Billetterie\BilletterieBundle\Services\MailService
+            arguments: []
+
+    date_choisie_service:
+            class: Billetterie\BilletterieBundle\Services\ValeurDateChoisieService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
+                - "@session"
+
+    reservation_service:
+            class: Billetterie\BilletterieBundle\Services\ReservationService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@router"
+                - "@session"
+                - "@tarif_service"
