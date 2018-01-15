@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row"><center><h1>Information sur le(s) visiteur(s)</h1></center></div>
+    <div class="row">
+        <center><p id="pErreur"></p></center>
+       <div class="col-lg-offset-3 col-lg-5 ">
+           {{ form(formClient) }}
+       </div>
+        <div class="col-lg-offset-1 col-lg-3">
+            {% if nbClient > 0 %}
+            <table  class="table-responsive">
+                <th>VOTRE PANIER</th>
+                {% for i in 1..nbClient %}
+                <tr>
+                    <td>
+                        Billet {{ i }} au tarif {{ tarifDuBillet[i-1].tarif.nom }} :
+                    </td>
+                    <td> {{ tarifDuBillet[i-1].tarif.montant }} </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br/>
+            <table>
+                <tr> <th>Total :  </th>
+                    <th id="total_montant_billet">{{ tarifTotalBillet }}</th><th>Euros</th>
+                </tr>
+            </table>
+                <a href="{{ path('prepare_stripe') }}">Valider le panier</a>
+            {% else %}
+                <tr><td>Votre panier est vide</td></tr>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{%  endblock %}
+{% block javascripts %}
+    <script type='text/javascript' src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/reservation.js') }}"></script>
+{% endblock %}
+
+
+

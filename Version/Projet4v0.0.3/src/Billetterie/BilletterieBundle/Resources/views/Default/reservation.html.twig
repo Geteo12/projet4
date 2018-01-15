@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row"><center><h1>Billetterie</h1></center></div>
+    <div class="row">
+
+       <div class="col-lg-offset-3 col-lg-5 ">
+           {{ form(formClient) }}
+       </div>
+        <div class="col-lg-offset-1 col-lg-3">
+            {% if nbClient > 0 %}
+            <table>
+                <th>PANIER</th>
+                {%  for i in 1..nbClient %}
+                <tr>
+                    <td>
+                        Billet {{ i }}
+                    </td>
+                    <td id="montant_billet{{ i }}">{{ tarifDuBillet[i-1].getTarif() }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br/>
+            <table>
+                <th >Total :  </th>
+                <th id="total_montant_billet">0</th>
+            </table>
+            {% else %}
+                <tr><td>Votre panier est vide</td></tr>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div id="nbClient" >montant_billet{{ nbClient }}</div>
+{%  endblock %}
+{% block javascripts %}
+    <script type='text/javascript' src="{{ asset('js/reservation.js') }}"></script>
+{% endblock %}
+
+
+

@@ -9,16 +9,23 @@ class TarifService
     public function tarifBillet ($date, $reduction)
     {
         $billet = 2;
+        $DateJour = new \DateTime('now');
+        $dateInterval = $DateJour->diff($date);
+        $age = $dateInterval->format('%y');
 
          if($reduction == 1)
          {
-             $billet = 4;
+             if ($age < 4)
+             {
+                 $billet = 5;
+             }
+             else
+             {
+                 $billet = 4;
+             }
          }
          else
          {
-            $DateJour = new \DateTime('now');
-            $dateInterval = $DateJour->diff($date);
-            $age = $dateInterval->format('%y');
             if ($age < 4)
             {
                 $billet = 5;

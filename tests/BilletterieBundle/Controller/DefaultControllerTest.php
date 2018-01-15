@@ -30,10 +30,52 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals($date, $commande->getDate());
     }
 
-    public function testTarifError(){
+    public function testCorrectTarif(){
         $tarif = new Tarif();
         $montant = 16;
         $tarif->setMontant($montant);
         $this->assertEquals($montant, $tarif->getMontant());
     }
+
+    public function testReservationActionDonneesValides()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', 'billetterie/date');
+
+        $form = $crawler->selectButton('Suivant')->form();
+
+                $form['$formPanier[\'date\']']      = '22/10/2018';
+                $form['$formPanier[\'Type\']'] 		= '1';
+                $form['$formPanier[\'mail\']']      = 'julien.boulnois12@gmail.com';
+
+
+        $client->submit($form);
+
+          $crawler = $client->followRedirect();
+
+          $form = $crawler->selectButton('submit')->form();
+          $values = $form->getPhpValues();
+
+
+          $values['form']['formClient'][0]['dateNaissance']        = '18/10/2000';
+          $values['form']['formClient'][0]['nom'] 		            ='Hennroule';
+          $values['form']['formClient'][0]['prenom']               = 'Franck';
+          $values['form']['formClient'][0]['pays'] 		        = 'Suisse';
+
+          $crawler = $client->request($form->getMethod(), $form->getUri(), $values, $form->getPhpFiles());
+          $crawler = $client->followRedirect();
+          $link = $crawler->selectLink('submit')->link();
+          $crawler = $client->click($link);
+
+        $this->assertContains("Les données sont correctes", $client->getResponse()->getContent());
+    }
+
+    public function testIndex()
+    {
+        $client = static::createClient();
+        $client->request('GET', 'billetterie/date');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
 }

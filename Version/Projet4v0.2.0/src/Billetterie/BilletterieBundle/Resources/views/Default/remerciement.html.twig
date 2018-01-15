@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row"><center><h1>L'équipe du louvre vous remercie !</h1></center></div>
+    <div class="row">
+       <div class="col-lg-offset-3 col-lg-5 ">
+           <br/>
+          <p> Merci pour votre réservation, un email va vous etre envoyé dans les prochaines minutes.</p>
+          <p>A bientôt dans notre musée.</p><br/>
+           <a href="{{ path('date_reservation') }}">Retour billetterie</a>
+       </div>
+    </div>
+</div>
+{%  endblock %}
+

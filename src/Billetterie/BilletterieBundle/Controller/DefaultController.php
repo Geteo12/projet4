@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
 
-
     public function choixDateAction (Request $request)
     {
             $panier = new Panier();

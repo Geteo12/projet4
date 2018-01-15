@@ -26,7 +26,7 @@ class ClientType extends AbstractType
                     'label'  => 'date de naissance jj/mm/aaaa',
                     ))
                 ->add('tarifReduit', CheckboxType::class, array('label' => 'Tarif réduit (sur présentation d\'un justificatif*)', 'required' => false))
-                ->add('enregistrer', SubmitType::class);
+                ->add('enregistrer', SubmitType::class, array ('attr' => array('value' => 'submit', 'label' =>'submit')));
     }
     
     /**

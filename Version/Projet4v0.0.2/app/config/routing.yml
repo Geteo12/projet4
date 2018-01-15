@@ -1,0 +1,9 @@
+billetterie:
+    resource: "@BilletterieBundle/Resources/config/routing.yml"
+    prefix:   /billetterie
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

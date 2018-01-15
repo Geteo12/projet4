@@ -25,7 +25,7 @@ class PanierType extends AbstractType
                         '2'=>'Demi-journée',
                     'multiple'=>false)))
                  ->add('mail', TextType::class ,array('label'  => 'mail'))
-                 ->add('Suivant', SubmitType::class);
+                 ->add('Suivant', SubmitType::class, array('attr' => array('value' => 'submit', 'label' =>'submit')));
     }
     
     /**
