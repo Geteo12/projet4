@@ -24,13 +24,6 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals($date, $commande->getDateNaissance());
     }
 
-    public function testCorrectDateVisit(){
-        $commande = new Panier();
-        $date = "30-07-2017";
-        $commande->setDateVisite($date);
-        $this->assertEquals($date, $commande->getDate());
-    }
-
     public function testCorrectTarif(){
         $tarif = new Tarif();
         $montant = 16;
@@ -38,13 +31,13 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals($montant, $tarif->getMontant());
     }
 
-
-    public function testTicketPageSuccess()
+    public function testDatePageSuccess()
     {
         $client = self::createClient();
         $session = $client->getContainer()->get('session');
         $session->set('user',1000);
         $session->save();
+
         $client->request('GET', 'billetterie/date');
         $this->assertTrue($client->getResponse()->isSuccessful());
     }

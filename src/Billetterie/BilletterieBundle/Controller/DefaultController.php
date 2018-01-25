@@ -19,9 +19,12 @@ class DefaultController extends Controller
     {
             $panier = new Panier();
             $formPanier = $this->get('form.factory')->create(PanierType::class, $panier);
+            $validator = $this->get('validator');
+            $validator->validate($formPanier);
             $resultat ="";
             if ($request->isMethod('POST') && $formPanier->handleRequest($request)->isValid())
             {
+
                 $em = $this->getDoctrine()->getManager();
                 $form = $request->request->get('billetterie_billetteriebundle_panier');
                 $dateService = $this->container->get('date_choisie_service');
@@ -45,6 +48,8 @@ class DefaultController extends Controller
     {
        $client = new Client();
        $formClient = $this->get('form.factory')->create(ClientType::class, $client);
+        $validator = $this->get('validator');
+        $validator->validate($formClient);
        $espaces = '  ';
        $session = $request -> getSession();
        $em = $this->getDoctrine()->getManager();
@@ -62,7 +67,7 @@ class DefaultController extends Controller
                 {
                     $form = $request->request->get('billetterie_billetteriebundle_client');
                     $dateService = $this->container->get('date_choisie_service');
-                    if(isset($formTarifReduit)) {
+                    if(isset($form['tarifReduit'])) {
                         $tarifReduit = 1;
                     } else {$tarifReduit = 0;}
                     $reservationService = $this->container->get('reservation_service');
@@ -82,6 +87,8 @@ class DefaultController extends Controller
     {
         $paiement = new Paiement();
         $formPaiement = $this->get('form.factory')->create(PaiementType::class, $paiement);
+        $validator = $this->get('validator');
+        $validator->validate($formPaiement);
         $session = $request -> getSession();
         $em = $this->getDoctrine()->getManager();
         $idPanier =  $session->get('name');

@@ -19,19 +19,19 @@ class PaiementType extends AbstractType
     {
         $builder->add('numCarte', TextType::class, array(
             'label'  => 'Numéro de carte bleue',
-            'attr'=> array('class'=>'card-number')))
+            'attr'=> array('class'=>'card-number input-lg')))
 
             ->add('moisExp', IntegerType::class, array(
                 'label'  => 'Date d\'expiration (MM)',
-                'attr'=> array('class'=>'card-expiry-month')))
+                'attr'=> array('class'=>'card-expiry-month input-lg')))
 
             ->add('anneeExp', IntegerType::class, array(
                 'label'  => 'Année d\'expiration (AA)',
-                'attr'=> array('class'=>'card-expiry-year')))
+                'attr'=> array('class'=>'card-expiry-year input-lg')))
 
             ->add('cvc', IntegerType::class, array(
                 'label'  => 'CVC',
-                'attr'=> array('class'=>'card-cvc')))
+                'attr'=> array('class'=>'card-cvc input-lg')))
 
             ->add('token', HiddenType::class, array(
                 'attr'=> array('name'=>'token')))

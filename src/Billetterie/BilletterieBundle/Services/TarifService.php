@@ -12,12 +12,15 @@ class TarifService
         $DateJour = new \DateTime('now');
         $dateInterval = $DateJour->diff($date);
         $age = $dateInterval->format('%y');
-
          if($reduction == 1)
          {
              if ($age < 4)
              {
                  $billet = 5;
+             }
+             else if($age <= 12)
+             {
+                 $billet = 1;
              }
              else
              {

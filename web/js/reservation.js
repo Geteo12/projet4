@@ -34,7 +34,7 @@ function dateDeNaissance (e)
 
 function verifNomPrenom (e)
 {
-    nom = document.querySelector("#billetterie_billetteriebundle_client_nom").value;
+   /* nom = document.querySelector("#billetterie_billetteriebundle_client_nom").value;
     prenom = document.querySelector("#billetterie_billetteriebundle_client_prenom").value;
 
     if(nom.length <= 1)
@@ -46,7 +46,7 @@ function verifNomPrenom (e)
     {
         e.preventDefault();
         pErreur.textContent ="Veuillez renseigner un prénom correct";
-    }
+    }*/
 }
 
 function dateDiff(date1, date2){

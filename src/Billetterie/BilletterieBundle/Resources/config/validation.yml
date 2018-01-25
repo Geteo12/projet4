@@ -1,0 +1,38 @@
+Billetterie\BilletterieBundle\Entity\Panier:
+    properties:
+        date:
+            - NotBlank: {message : "Veuillez saisir une date"}
+            - Date: {message : "Date invalide"}
+        mail:
+            - NotBlank: {message : "Mail invalide"}
+            - Email:
+                message : Votre email "{{ value }}" n'est pas une adresse valide
+                checkMX: true
+
+
+Billetterie\BilletterieBundle\Entity\Client:
+    properties:
+        nom:
+            - NotBlank: {message : "Nom invalide"}
+            - Length :
+                min : 2
+                minMessage: "Votre nom est trop court"
+        prenom:
+            - NotBlank: {message : "Prenom invalide"}
+            - Length :
+                min : 2
+                minMessage: "Votre prénom est trop court"
+        dateNaissance:
+            - NotBlank: {message : "Date de naissance non saisie"}
+            - Date: {message : "Date invalide"}
+
+Billetterie\BilletterieBundle\Entity\Paiement:
+    properties:
+        numCarte:
+            - NotBlank: {message : "Numéro de carte invalide"}
+        moisExp:
+            - NotBlank: {message : "Mois d'expiation invalide"}
+        anneeExp:
+            - NotBlank: {message : "Année d'expiation invalide"}
+        cvc:
+            - NotBlank: {message : "CVC invalide"}

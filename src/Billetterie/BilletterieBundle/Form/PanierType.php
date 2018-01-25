@@ -18,13 +18,14 @@ class PanierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder ->add('date', DateType::class, array(
-            'widget' => 'single_text', 'label'  => 'date jj/mm/aaaa'))
+            'widget' => 'single_text', 'label'  => 'date jj/mm/aaaa', 'attr' => array('class'=>'input-lg')))
                  ->add('Type',ChoiceType::class,
                     array('choices' => array(
                         '1'=>'Journée',
                         '2'=>'Demi-journée',
-                    'multiple'=>false)))
-                 ->add('mail', TextType::class ,array('label'  => 'mail'))
+                    'multiple'=>false),
+                        'attr' => array('class'=> 'input-lg')))
+                 ->add('mail', TextType::class ,array('label'  => 'mail', 'attr' => array('class'=>'input-lg')))
                  ->add('Suivant', SubmitType::class, array('attr' => array('value' => 'submit', 'label' =>'submit')));
     }
     

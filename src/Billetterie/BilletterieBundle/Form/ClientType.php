@@ -18,12 +18,12 @@ class ClientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom' ,TextType::class ,array('label'  => 'Nom'))
-                ->add('prenom' ,TextType::class ,array('label'  => 'Prénom'))
-                ->add('pays' , CountryType::class)
+        $builder->add('nom' ,TextType::class ,array('label'  => 'Nom', 'attr' => array('class'=>'input-lg')))
+                ->add('prenom' ,TextType::class ,array('label'  => 'Prénom', 'attr' => array('class'=>'input-lg')))
+                ->add('pays' , CountryType::class, array('attr' => array('class'=>'input-lg')))
                 ->add('dateNaissance', DateType::class, array(
                     'widget' => 'single_text',
-                    'label'  => 'date de naissance jj/mm/aaaa',
+                    'label'  => 'date de naissance jj/mm/aaaa', 'attr' => array('class'=>'input-lg')
                     ))
                 ->add('tarifReduit', CheckboxType::class, array('label' => 'Tarif réduit (sur présentation d\'un justificatif*)', 'required' => false))
                 ->add('enregistrer', SubmitType::class, array ('attr' => array('value' => 'submit', 'label' =>'submit')));
